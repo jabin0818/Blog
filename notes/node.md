@@ -39,3 +39,7 @@ readFilePromise('example.txt')
 ```
 
 在这个例子中，`util.promisify` 将 `readFileCallback` 函数转换为返回 Promise 的函数 `readFilePromise`。这使得你可以使用 Promise 的 `.then` 和 `.catch` 方法处理异步操作，而不必传递回调函数。
+
+
+
+### Node 环境中的事件环（Event Loop)
