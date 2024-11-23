@@ -75,5 +75,9 @@ console.log(Array.from(arr, function (n){
 
 ```
 
+### >>.0
+
+新运算符，将小数点后面置为0，用于number转int，也可直接使用 | 0
+
 
 
