@@ -43,3 +43,61 @@ readFilePromise('example.txt')
 
 
 ### Node 环境中的事件环（Event Loop)
+
+
+
+
+
+## Node项目设置环境变量
+
+- 下载`cross-env`
+
+```shell
+npm i cross-env
+```
+
+- 配置不同环境变量
+
+```json
+"scripts": {
+  "start": "cross-env NODE_ENV=production nodemon app.js",
+  "dev": "cross-env NODE_ENV=development nodemon app.js",
+  "test": "cross-env NODE_ENV=test node app.js"
+}
+```
+
+- 在根目录下新建三个文件
+
+`.env.development` `.env.production` `.env.test`
+
+```
+NODE_ENV = 'development'
+
+HOST = '127.0.0.1'
+PORT = 3008
+
+MYSQL_HOST = '192.168.237.128'
+MYSQL_USERNAME = 'root'
+MYSQL_PASSWORD = '123456'
+MYSQL_DATABASE = 'fllp'
+
+REDIS_HOST = '192.168.237.128'
+REDIS_PORT = 6379
+REDIS_DATABASE = 'fllp'
+```
+
+- 使用dotenv加载不同环境配置文件
+
+```javascript
+// 环境变量切换
+const dotenv = require("dotenv");
+// 根据 NODE_ENV 加载相应的 .env 文件
+const envFile = `.env.${process.env.NODE_ENV || "development"}`;
+dotenv.config({ path: envFile });
+
+// 使用环境变量
+const PORT = process.env.PORT || 3008;
+const DATABASE_URL = process.env.DATABASE_URL;
+
+```
+
